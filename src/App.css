@@ -1,0 +1,51 @@
+:root {
+    /*=== Variáveis CSS  ===*/
+
+    /* Fonts */
+    --font-main: Arial, sans-serif;
+    --font-second: 'Spectral', Georgia;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: #333;
+    font-family: var(--font-main);
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+ul,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input {
+    display: block;
+    font-size: 1rem;
+    font-family: var(--font-main);
+    color: #333;
+}
+
+/* Class geral, englobará o App.jsx */
+.container {
+    max-width: 60rem;
+    padding: 0 1rem;
+    margin: 0 auto;
+}
