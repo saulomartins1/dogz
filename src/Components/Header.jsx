@@ -6,11 +6,11 @@ import DogzLogo from '../Assets/dogz.svg?react'
 function Header() {
     return (
         <header className={styles.header}>
-            <nav>
-                <Link to='/' aria-label='Dogz - Home'>
+            <nav className={`${styles.nav} container`}>
+                <Link className={styles.logo} to='/' aria-label='Dogz - Home'>
                     <DogzLogo />
                 </Link>
-                <Link to='/login'>Entrar / Cadastrar</Link>
+                <Link className={styles.login} to='/login'>Entrar / Cadastrar</Link>
             </nav>
         </header>
     )

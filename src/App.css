@@ -6,11 +6,15 @@
     --font-second: 'Spectral', Georgia;
 }
 
+/* CSS Reset ===============*/
 * {
     box-sizing: border-box;
 }
 
 body {
+    /* header height size*/
+    padding-top: 4.20rem;
+
     margin: 0;
     color: #333;
     font-family: var(--font-main);
@@ -42,6 +46,14 @@ input {
     font-family: var(--font-main);
     color: #333;
 }
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* ===============  */
+
 
 /* Class geral, englobará o App.jsx */
 .container {
