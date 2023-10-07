@@ -3,32 +3,19 @@ import { Link } from 'react-router-dom'
 import Input from '../Form/Input';
 import Button from '../Form/Button';
 import useForm from '../../Hooks/useForm';
-import { TOKEN_POST, USER_GET } from '../../api';
+import { UserContext } from '../../Contexts/UserContext'
 
 function LoginForm() {
     const username = useForm();
     const password = useForm();
-
-    async function getUser(token) {
-        const { url, options } = USER_GET(token);
-        const response = await fetch(url, options);
-        const json = await response.json();
-        console.log(json)
-    }
+    const { userLogin } = React.useContext(UserContext);
 
     async function handleLogin(e) {
         e.preventDefault();
 
         if (username.validate() && password.validate()) {
-            //Fetch na API
-            const { url, options } = TOKEN_POST({ username: username.value, password: password.value })
-
-            const response = await fetch(url, options);
-            const json = await response.json();
-            localStorage.setItem("TOKEN", json.token)
-            getUser(json.token)
-
-            console.log(response, json)
+            //Fetch na API (via função do contexto UserContext.jsx )
+            userLogin(username.value, password.value)
         }
 
     }
