@@ -8,9 +8,7 @@ function Header() {
 
     //Testando
     //Puxa e retorna o username no console; Se conseguir logar (pois data deve ter algum valor)
-    const { data } = React.useContext(UserContext);
-    { data && console.log(data.username) }
-
+    const { data, userLogout } = React.useContext(UserContext);
 
 
     return (
@@ -19,7 +17,15 @@ function Header() {
                 <Link className={styles.logo} to='/' aria-label='Dogz - Home'>
                     <DogzLogo />
                 </Link>
-                <Link className={styles.login} to='/login'>Entrar / Cadastrar</Link>
+                {data ?
+                    <>
+                        <Link className={styles.login} to='/conta'>{data.username}</Link>
+                        <button onClick={() => userLogout()}>sair</button>
+                    </>
+                    :
+                    <Link className={styles.login} to='/login'>Entrar / Cadastrar</Link>
+                }
+
             </nav>
         </header>
     )

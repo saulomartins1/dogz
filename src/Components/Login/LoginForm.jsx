@@ -8,7 +8,7 @@ import { UserContext } from '../../Contexts/UserContext'
 function LoginForm() {
     const username = useForm();
     const password = useForm();
-    const { userLogin } = React.useContext(UserContext);
+    const { userLogin, error, loading } = React.useContext(UserContext);
 
     async function handleLogin(e) {
         e.preventDefault();
@@ -27,11 +27,12 @@ function LoginForm() {
             <Input label="Usuário" type="text" name="username" {...username} />
             <Input label="Senha" type="password" name="password" {...password} />
 
-            <Button>Entrar</Button>
+            {loading ? <Button disabled>Aguarde...</Button> : <Button>Entrar</Button>}
+            {error && <p>Houve um erro, tente novamente...</p>}
 
             <Link to="criar">Criar conta</Link>
             <Link to="recuperar">Esqueceu a senha?</Link>
-        </form >
+        </form>
     )
 }
 
