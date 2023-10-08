@@ -1,0 +1,42 @@
+.form {
+    margin-bottom: .9rem;
+}
+
+.recuperar {
+    display: inline-block;
+    color: #999;
+    padding: .6rem 0;
+}
+
+.recuperar::after {
+    content: '';
+    height: 1px;
+    width: 100%;
+    background-color: currentColor;
+    display: block;
+    border-radius: 3px;
+}
+
+.cadastro {
+    margin-top: 3rem;
+}
+
+.cadastro p {
+    margin: .9rem 0 .9rem 0;
+}
+
+.subtitle {
+    font-family: var(--font-second);
+    font-size: 1.6rem;
+    position: relative;
+}
+
+.subtitle::before {
+    content: '';
+    height: 3px;
+    width: 3.3rem;
+    border-radius: 3px;
+    background-color: #9996;
+    position: absolute;
+    bottom: 0;
+}

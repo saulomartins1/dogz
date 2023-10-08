@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@700&display=swap');
+
 :root {
     /*=== Variáveis CSS  ===*/
 
     /* Fonts */
     --font-main: Arial, sans-serif;
-    --font-second: 'Spectral', Georgia;
+    --font-second: 'Spectral', georgia;
 }
 
 /* CSS Reset ===============*/
@@ -60,4 +62,42 @@ a {
     max-width: 60rem;
     padding: 0 1rem;
     margin: 0 auto;
+}
+
+
+/* title */
+.title {
+    font-family: var(--font-second);
+    line-height: 1;
+    font-size: 3rem;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.title::after {
+    content: '';
+    display: block;
+    width: 1.6rem;
+    height: 1.6rem;
+    background-color: rgba(255, 169, 19, 0.699);
+    position: absolute;
+    top: 19px;
+    left: -6px;
+    z-index: -1;
+    border-radius: 3px;
+}
+
+
+/* Animation */
+.animeLeft {
+    opacity: 0;
+    transform: translateX(-19px);
+    animation: animeLeft .3s forwards;
+}
+
+@keyframes animeLeft {
+    to {
+        opacity: 1;
+        transform: initial;
+    }
 }
