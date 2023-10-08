@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from '../api';
+import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET, USER_POST } from '../api';
 
 export const UserContext = React.createContext();
 
@@ -21,7 +21,7 @@ export const UserStorage = ({ children }) => {
             setError(null);
             setLoading(true);
             const response = await fetch(url, options);
-            if (!response.ok) { return setError("Não foi possível entrar, tente novamente!"); }
+            if (!response.ok) return setError("Não foi possível entrar, tente novamente!");
             const json = await response.json();
             //Se o fetch for bem-suceddo seta o valor que está na propriedade token: do objeto json no localStorage
             localStorage.setItem("TOKEN", json.token)
@@ -34,6 +34,27 @@ export const UserStorage = ({ children }) => {
             setLoading(false)
         }
     }
+
+    //Função responsável pela criação do usuário - adicionar informações na API;
+    //No curso essa parte não existe, é usado custom hook "useFetch" p/ ter acesso aos estados data, loading, error no LoginCreate.jsx...
+    //...por enquanto preferi deixar tudo aqui dentro desse Context, mesmo que seja repetitivo;
+    async function userSignup(username, email, password) {
+        const { url, options } = USER_POST({ username, email, password })
+
+        try {
+            setError(null);
+            setLoading(true);
+            const response = await fetch(url, options);
+            if (!response.ok) return setError("Usuário ou email não disponível!");
+            await userLogin(username, password)
+        } catch (err) {
+            console.log(err)
+            setLogin(false);
+        } finally {
+            setLoading(false)
+        }
+    }
+
 
     //Função responsável por fazer fetch na API e retornar os dados com usuário com base no token passado.
     const getUser = React.useCallback(async function (token) {
@@ -86,7 +107,7 @@ export const UserStorage = ({ children }) => {
     return (
         //Acesso a função de logar e ao data com as infos do usuário caso fetch for true;
         //...em todos os components que o <UserStorage> engloba e que está usando o contexto: useContext(UserContext)
-        <UserContext.Provider value={{ userLogin, userLogout, data, login, error, loading }}>
+        <UserContext.Provider value={{ userLogin, userSignup, userLogout, data, login, error, loading }}>
             {children}
         </UserContext.Provider>
     )

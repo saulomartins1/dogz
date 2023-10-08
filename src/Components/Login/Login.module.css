@@ -1,10 +1,8 @@
 .login {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-content: space-between;
-    align-items: stretch;
     min-height: 100vh;
-    gap: 0rem;
+    gap: 3rem;
 }
 
 .login::before {
@@ -16,7 +14,7 @@
 
 .forms {
     max-width: 30rem;
-    padding: 3rem;
+    padding-top: 9rem;
 }
 
 @media (max-width: 40rem) {
@@ -29,6 +27,7 @@
     }
 
     .forms {
+        padding: 3rem;
         max-width: 100%;
     }
 }

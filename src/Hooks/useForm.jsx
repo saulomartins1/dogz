@@ -2,9 +2,13 @@ import React from 'react'
 
 const types = {
     email: {
-        regex: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
+        regex: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+        message: "Preencha um email válido!",
     },
-    message: "Preencha um email válido!"
+    password: {
+        regex: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}/,
+        message: "Mínimo 8 dígitos, 1 letra maiúscula, 1 minúscula, 1 número",
+    },
 }
 
 function useForm(type) {
@@ -32,7 +36,7 @@ function useForm(type) {
             //LÓGICA: Se tiver essa propriedade: [type] no objeto types, ex: ['email'] e a validação do regex retornar false (não válido)
             //...então Informa o usuário com o error.
         } else if (types[type] && !types[type].regex.test(value)) {
-            setError("Email inválido!")
+            setError(types[type].message)
             return false;
         } else {
             setError(null)
