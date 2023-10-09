@@ -25,8 +25,6 @@ function UserHeader() {
 
     }, [pathname])
 
-    console.log(pathname)
-
     return (
         <header className={styles.header}>
             <h1 className='title'>{title}</h1>
