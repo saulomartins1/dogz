@@ -73,8 +73,7 @@ export const UserStorage = ({ children }) => {
         setLogin(false);
         setLoading(false);
         localStorage.removeItem("TOKEN");
-        navigate("/login")
-    }, [navigate])
+    }, [])
 
     //Verifica se no localStorage se tem a key 'TOKEN' e se o 'value' é válido via fetch (TOKEN_VALIDATE_POST) na API;
     //...caso seja, inicia o processo de auto login na conta, alterando os states de acordo com o status de cada condição.
