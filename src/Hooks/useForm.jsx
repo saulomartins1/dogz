@@ -9,6 +9,10 @@ const types = {
         regex: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}/,
         message: "Mínimo 8 dígitos, 1 letra maiúscula, 1 minúscula, 1 número",
     },
+    number: {
+        regex: /^\d+$/,
+        message: "Somente números!"
+    }
 }
 
 function useForm(type) {
