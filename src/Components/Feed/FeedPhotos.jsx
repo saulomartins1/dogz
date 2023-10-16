@@ -4,6 +4,7 @@ import useFetch from '../../Hooks/useFetch';
 import Error from '../Helper/Error';
 import { PHOTOS_GET } from '../../api';
 import Loading from '../Helper/Loading';
+import styles from './FeedPhotos.module.css'
 
 function FeedPhotos() {
     const { data, error, loading, request } = useFetch();
@@ -13,7 +14,6 @@ function FeedPhotos() {
             const { url, options } = PHOTOS_GET({ page: 1, total: 6, user: 0 });
 
             const { response, json } = await request(url, options);
-            console.log(json)
         }
         fetchPhotos();
     }, [request]);
@@ -22,8 +22,10 @@ function FeedPhotos() {
     if (loading) return <Loading />
     if (data)
         return (
-            <ul>
-                {data.map((photo) => <FeedPhotosItem id={photo.id} photo={photo} />)}
+            <ul className={styles.feed}>
+                {data.map((photo) => {
+                    return <FeedPhotosItem key={photo.id} id={photo.id} photo={photo} />
+                })}
 
             </ul>
         );
