@@ -8,13 +8,12 @@ function useFetch() {
     const request = React.useCallback(async (url, options) => {
         let response;
         let json;
-
         try {
             setError(null)
             setLoading(true)
             response = await fetch(url, options);
             json = await response.json();
-            if (response.ok === false) throw new Error(json.message);
+            if (response.ok !== true) throw new Error("Error no response fetch");
         }
         catch (err) {
             json = null;
@@ -23,6 +22,7 @@ function useFetch() {
         finally {
             setData(json) //Caso houver erro, setData como "null" (json = null)
             setLoading(false)
+            return { response, json }
         }
 
     }, [])
