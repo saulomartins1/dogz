@@ -59,10 +59,14 @@ a {
 
 /* Class geral, englobará o App.jsx */
 .container {
-    /* max-width: 60rem; */
+    max-width: 60rem;
     margin: 0 auto;
+    padding: 0 1rem;
 }
 
+.mainContainer {
+    margin-top: 4rem;
+}
 
 /* title */
 .title {
