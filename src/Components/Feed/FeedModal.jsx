@@ -6,7 +6,7 @@ import Loading from '../Helper/Loading';
 import { PHOTO_GET } from '../../api';
 import PhotoContent from '../Photo/PhotoContent';
 
-function FeedModal({ photo }) {
+function FeedModal({ photo, setModalPhoto }) {
     const { data, error, loading, request } = useFetch();
 
     React.useEffect(() => {
@@ -14,8 +14,14 @@ function FeedModal({ photo }) {
         request(url, options)
     }, [photo, request])
 
+    function handleModalExit(e) {
+        if (e.target === e.currentTarget) {
+            setModalPhoto(null)
+        }
+    }
+
     return (
-        <div className={styles.modal}>
+        <div onClick={handleModalExit} className={styles.modal}>
             <div className={styles.modalBox}>
                 {error && <Error error={error} />}
                 {loading && <Loading />}
