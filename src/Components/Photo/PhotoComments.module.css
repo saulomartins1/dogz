@@ -1,0 +1,10 @@
+.comments {
+    overflow-y: auto;
+    word-break: break-word;
+    padding: 1.9rem;
+}
+
+.comments li {
+    margin-bottom: .6rem;
+    line-height: 1.2;
+}

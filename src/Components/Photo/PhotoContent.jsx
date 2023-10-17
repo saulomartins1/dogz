@@ -25,8 +25,8 @@ function PhotoContent({ data }) {
                         <li>{photo.idade >= 1 ? `${photo.idade} anos` : `${photo.idade} ano`}</li>
                     </ul>
                 </div>
-                <PhotoComments id={photo.id} comments={comments} />
             </div>
+            <PhotoComments id={photo.id} comments={comments} />
 
         </div>
     )
