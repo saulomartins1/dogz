@@ -1,0 +1,14 @@
+.delete {
+    background-color: #eee;
+    padding: .3rem .6rem;
+    border: 1px solid transparent;
+    font-size: .879rem;
+    cursor: pointer;
+    border-radius: .3rem;
+    transition: .1s;
+}
+
+.delete:hover {
+    outline: none;
+    background-color: #ddd;
+}

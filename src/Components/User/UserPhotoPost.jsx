@@ -33,7 +33,6 @@ function UserPhotoPost() {
         const { url, options } = PHOTO_POST(formData, token)
         request(url, options)
     }
-    console.log(img)
 
     function handleImgChange({ target }) {
         setImg({

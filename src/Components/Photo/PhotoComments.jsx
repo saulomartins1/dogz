@@ -13,6 +13,8 @@ const PhotoComments = (props) => {
         const heightCommentsSection = commentsSection.current.getBoundingClientRect().height;
         commentsSection.current.scrollTop = heightCommentsSection;
     }, [comments])
+
+
     return (
         <>
             <ul ref={commentsSection} className={styles.comments}>
