@@ -8,3 +8,9 @@
     margin-bottom: .6rem;
     line-height: 1.2;
 }
+
+@media (max-width: 64rem) {
+    .comments.single {
+        min-height: 10rem;
+    }
+}

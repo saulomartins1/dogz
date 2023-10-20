@@ -33,6 +33,18 @@
 }
 
 @media (max-width: 64rem) {
+    .photo.single {
+        grid-template-columns: 1fr;
+    }
+
+    .single .container {
+        padding: 0;
+    }
+
+    .single .mainContainer {
+        margin-top: 0.9rem;
+    }
+
     .photo {
         height: auto;
         max-height: calc(100vh - 4rem);

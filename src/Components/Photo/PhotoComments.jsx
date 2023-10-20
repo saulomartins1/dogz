@@ -17,7 +17,7 @@ const PhotoComments = (props) => {
 
     return (
         <>
-            <ul ref={commentsSection} className={styles.comments}>
+            <ul ref={commentsSection} className={`${styles.comments} ${props.single ? styles.single : ''}`}>
                 {comments.map((c) =>
                     <li key={c.comment_ID}>{c.comment_author}: <span>{c.comment_content}</span></li>
                 )}
