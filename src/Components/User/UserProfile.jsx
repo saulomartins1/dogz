@@ -9,6 +9,7 @@ function UserProfile() {
         <section>
             <h1 className='title' style={{ margin: '1.9rem 0' }}>{user}</h1>
             <Feed user={user} />
+
         </section>
     )
 }
