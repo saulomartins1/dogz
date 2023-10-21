@@ -5,20 +5,24 @@ import Feed from '../Feed/Feed'
 import UserPhotoPost from './UserPhotoPost'
 import UserStats from './UserStats'
 import { UserContext } from '../../Contexts/UserContext'
+import Head from '../Helper/Head'
 
 function User() {
 
     const { data } = React.useContext(UserContext);
     console.log(data.id)
     return (
-        <section className='container'>
-            <UserHeader />
-            <Routes>
-                <Route path='/' element={<Feed user={data.id} />}></Route>
-                <Route path='postar' element={<UserPhotoPost />}></Route>
-                <Route path='stats' element={<UserStats />}></Route>
-            </Routes>
-        </section >
+        <>
+            <Head title="Minha conta" description="Descrição" />
+            <section className='container'>
+                <UserHeader />
+                <Routes>
+                    <Route path='/' element={<Feed user={data.id} />}></Route>
+                    <Route path='postar' element={<UserPhotoPost />}></Route>
+                    <Route path='stats' element={<UserStats />}></Route>
+                </Routes>
+            </section >
+        </>
     )
 }
 

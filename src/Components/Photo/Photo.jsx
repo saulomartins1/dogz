@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { PHOTO_GET } from '../../api';
 import useFetch from '../../Hooks/useFetch';
 import Error from '../Helper/Error';
+import Head from '../Helper/Head';
 import Loading from '../Helper/Loading';
 import PhotoContent from './PhotoContent';
 
@@ -17,7 +18,10 @@ function Photo() {
     if (error) return <Error error={error} />
     if (error) return <Loading />
     if (data) return (
-        <section className="container mainContainer"> <PhotoContent single={true} data={data} /> </section>
+        <>
+            <Head title={data.photo.title} description="Descrição" />
+            <section className="container mainContainer"> <PhotoContent single={true} data={data} /> </section>
+        </>
     )
     else return null
 }
