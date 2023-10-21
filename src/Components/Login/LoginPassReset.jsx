@@ -5,32 +5,45 @@ import useForm from '../../Hooks/useForm'
 import useFetch from '../../Hooks/useFetch'
 import Error from '../Helper/Error'
 import { PASSWORD_RESET } from '../../api'
+import { useNavigate } from 'react-router-dom'
 
-function LoginPassReset() {
+function LoginPasswordReset() {
 
-    const email = useForm()
-    const { data, loading, error, request } = useFetch();
+    const [login, setLogin] = React.useState('');
+    const [key, setKey] = React.useState('');
+    const { error, loading, request } = useFetch();
+    const password = useForm();
+    const navigate = useNavigate();
 
+    React.useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const key = params.get('key');
+        const login = params.get('login');
+        if (key) setKey(key);
+        if (login) setLogin(login);
+    }, [])
 
     async function handleSubmit(e) {
         e.preventDefault();
-        if (email.validate()) {
-            const { url, options } = PASSWORD_RESET({ login: email.value, url: 'http://localhost:5173/login/recuperar' })
+        if (password.validate()) {
+            const { url, options } = PASSWORD_RESET({ login, key, password: password.value })
+            const { response } = await request(url, options)
+            if (response.ok) navigate('/login')
         }
 
     }
 
+
     return (
-        <section><h1 className='title'>Recuperar senha</h1>
-            {data ? <h3>Se {`"${email.value}"`} for uma credencial válida você receberá as instruções para recuperar a senha!</h3> :
-                <form onSubmit={handleSubmit} action="">
-                    <Input label={"Email / Usuário"} type="text" name="email" {...email} />
-                    {loading ? <Button disabled>Aguarde...</Button> : <Button>Enviar email</Button>}
-                </form>
-            }
+        <div>
+            <h1 className='title'>Redefinir senha</h1>
+            <form onSubmit={handleSubmit}>
+                <Input label={"Nova senha"} type={"password"} name={"password"} {...password} />
+                {loading ? <Button disabled>Redefinindo...</Button> : <Button>Redefinir</Button>}
+            </form>
             <Error error={error} />
-        </section>
+        </div>
     )
 }
 
-export default LoginPassReset
+export default LoginPasswordReset
