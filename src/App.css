@@ -56,6 +56,15 @@ a {
 
 /* ===============  */
 
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh + 9rem);
+}
+
+.appBody {
+    flex: 1;
+}
 
 /* Class geral, englobará o App.jsx */
 .container {

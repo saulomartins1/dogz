@@ -16,22 +16,24 @@ import { UserStorage } from './Contexts/UserContext'
 
 function App() {
     return (
-        <div className="container">
+        <div className="app">
             <BrowserRouter>
                 <UserStorage>
                     <Header />
-                    <Routes>
-                        <Route path='/' element={<Home />} />
-                        <Route path='/login/*' element={<Login />} />
-                        <Route path='/conta/*' element={
-                            //Verifica se está logado no componente abaixo para ter acesso a página/rota da conta d ousuário.
-                            <ProtectedRoute>
-                                <User />
-                            </ProtectedRoute>
-                        } />
-                        <Route path='/foto/:id' element={<Photo />} />
-                        <Route path='/perfil/:user' element={<UserProfile />} />
-                    </Routes>
+                    <main className="appBody">
+                        <Routes>
+                            <Route path='/' element={<Home />} />
+                            <Route path='/login/*' element={<Login />} />
+                            <Route path='/conta/*' element={
+                                //Verifica se está logado no componente abaixo para ter acesso a página/rota da conta d ousuário.
+                                <ProtectedRoute>
+                                    <User />
+                                </ProtectedRoute>
+                            } />
+                            <Route path='/foto/:id' element={<Photo />} />
+                            <Route path='/perfil/:user' element={<UserProfile />} />
+                        </Routes>
+                    </main>
                     <Footer />
                 </UserStorage>
             </BrowserRouter>

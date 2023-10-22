@@ -1,0 +1,13 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+    max-height: 9rem;
+    color: #442902;
+    background-color: #fb1;
+}
+
+.footer svg {
+    margin-right: .9rem;
+}
