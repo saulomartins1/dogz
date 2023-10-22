@@ -66,6 +66,11 @@ a {
     flex: 1;
 }
 
+/* remove o "height: 100%" que vem por padrão da lib Victory. 
+.VictoryContainer {
+    height: initial !important;
+} */
+
 /* Class geral, englobará o App.jsx */
 .container {
     max-width: 60rem;
