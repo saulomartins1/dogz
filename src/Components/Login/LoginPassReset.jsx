@@ -38,15 +38,14 @@ function LoginPasswordReset() {
     return (
         <>
             <Head title="Redefinir senha" description="Descrição" />
-
-            <div>
+            <section>
                 <h1 className='title'>Redefinir senha</h1>
                 <form onSubmit={handleSubmit}>
                     <Input label={"Nova senha"} type={"password"} name={"password"} {...password} />
                     {loading ? <Button disabled>Redefinindo...</Button> : <Button>Redefinir</Button>}
                 </form>
                 <Error error={error} />
-            </div>
+            </section>
         </>
     )
 }
